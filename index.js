@@ -48,18 +48,26 @@ function clearInputFieldEl() {
 }
 
 function appendItemToShoppingListEl(item) {
-    let itemID = item[0]
-    let itemValue = item[1]
-    
-    let newEl = document.createElement("li")
-    
-    newEl.textContent = itemValue
-    
-    newEl.addEventListener("click", function() {
-        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
-        
-        remove(exactLocationOfItemInDB)
-    })
-    
-    shoppingListEl.append(newEl)
+  let itemID = item[0]
+  let itemValue = item[1]
+  
+  let newEl = document.createElement("li")
+  
+  newEl.textContent = itemValue
+  
+  newEl.addEventListener("click", function() {
+      // let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+      // remove(exactLocationOfItemInDB)
+      toggle(newEl)
+  })
+  
+  shoppingListEl.append(newEl)
+}
+
+function toggle(el) {
+  if (!el.getAttribute("class")) {
+      el.setAttribute("class", "strikeout")
+  } else {
+      el.classList.remove("strikeout");
+  }
 }
