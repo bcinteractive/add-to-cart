@@ -72,4 +72,5 @@ ul li:hover {
 
 .strikeout {
   text-decoration: line-through;
+  opacity: 0.6;
 }
